@@ -6,10 +6,10 @@
 {{ /if }}
     <channel>
         <title><![CDATA[{{@ title || 'RSSHub' }}]]></title>
-        <link>{{ link || 'https://github.com/DIYgod/RSSHub' }}</link>
-        <description><![CDATA[{{@ description || title }} - Made with love by RSSHub(https://github.com/DIYgod/RSSHub)]]></description>
+        <link>{{ link || '//0.0.0.0' }}</link>
+        <description><![CDATA[{{@ description || title }}]]></description>
         <generator>RSSHub</generator>
-        <webMaster>i@diygod.me</webMaster>
+        <webMaster>no_one</webMaster>
         {{ if itunes_author }}<itunes:author>{{ itunes_author}}</itunes:author>{{ /if }}
         {{ if itunes_category }}<itunes:category text="{{ itunes_category }}"/>{{ /if }}
         <language>{{ language || 'zh-cn' }}</language>

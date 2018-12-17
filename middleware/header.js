@@ -9,7 +9,7 @@ const headers = {
 };
 
 module.exports = async (ctx, next) => {
-    logger.info(`${ctx.url}, user IP: ${ctx.ips[0] || ctx.ip}`);
+    // logger.info(`${ctx.url}, user IP: ${ctx.ips[0] || ctx.ip}`);
     ctx.set(headers);
     await next();
 };
