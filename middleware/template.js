@@ -2,13 +2,13 @@ const art = require('art-template');
 const path = require('path');
 const config = require('../config');
 const he = require('he');
-const typeRegrx = /\.(atom|rss)$/;
-const unsupportedRegrx = /\.json$/;
+const typeRegrx = /\.(atom|rss|json)$/;
+// const unsupportedRegrx = /\.json$/;
 
 module.exports = async (ctx, next) => {
-    if (ctx.request.path.match(unsupportedRegrx)) {
-        throw Error('<b>JSON output had been removed, see: <a href="https://github.com/DIYgod/RSSHub/issues/1114">https://github.com/DIYgod/RSSHub/issues/1114</a></b>');
-    }
+    // if (ctx.request.path.match(unsupportedRegrx)) {
+    //     throw Error('<b>JSON output had been removed, see: <a href="https://github.com/DIYgod/RSSHub/issues/1114">https://github.com/DIYgod/RSSHub/issues/1114</a></b>');
+    // }
 
     ctx.state.type = ctx.request.path.match(typeRegrx) || ['', ''];
     ctx.request.path = ctx.request.path.replace(typeRegrx, '');
@@ -24,6 +24,12 @@ module.exports = async (ctx, next) => {
                 break;
             case 'rss':
                 template = path.resolve(__dirname, '../views/rss.art');
+                break;
+            case 'json':
+                template = path.resolve(__dirname,'../views/json.art');
+                ctx.set({
+                    'Content-Type': 'application/json; charset=UTF-8',
+                });
                 break;
             default:
                 template = path.resolve(__dirname, '../views/rss.art');
