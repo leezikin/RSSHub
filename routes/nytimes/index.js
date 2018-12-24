@@ -11,9 +11,8 @@ module.exports = async (ctx) => {
                 method: 'get',
                 url: item.link,
             });
-
+            response.data = response.data.replace(/^([a-zA-z]+:\/\/[^\s]*.(jpg|png|jpeg|gif))$/,"https://images.weserv.nl/?url=$1")
             const description = utils.ProcessFeed(response.data);
-
             const single = {
                 title: item.title,
                 description,
