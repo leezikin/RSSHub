@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{{@ title || 'RSSHub' }}</title>
+    <style>
+        body {
+            width: 35em;
+            margin: 0 auto;
+            font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-size: 16px;
+            color: #2c3e50;
+        }
+
+        .content {
+            position: absolute;
+            margin-top: 80px;
+            left: 50%;
+            transform: translate(-50%, 0%);
+            min-width: 400px;
+            max-width: 720px;
+            text-align: center;
+        }
+        .item-card {
+            margin-top:20px;
+            border: 1px solid #dcdee2;
+            border-color: #e8eaec;
+            background: #fff;
+            border-radius: 7px;
+            transition: all .2s ease-in-out;
+        }
+        .description img{
+            max-width:80%;
+        }
+
+        .item-card:hover{
+            box-shadow: 0 1px 6px rgba(0,0,0,.2);
+            border-color: #eee;
+        }
+
+        .item-card-body{
+            padding: 16px;
+        }
+
+        .item-card-img{
+            width: 80%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+    <h2>{{ title }}</h2>
+    {{ each item }}
+          <div class="item-card">
+                <div class="item-card-body">
+                    <div>{{@ $value.title }}</div>
+                    <br/>
+                    {{ if $value.pubDate }}<p>{{ $value.pubDate }}</p></br>{{ /if }}
+                    <div class="description">{{@ $value.description || ""}}</div>
+                    {{ if 1!=1}}<div style="text-align: center;"><img class="item-card-img" src="{{ $value.html_img }}"></div>{{ /if }}
+                    <a href="{{ $value.link }}">原网页</a>
+                    {{ if $value.author }}<p>{{ $value.author }}</p>{{ /if }}
+                 </div>
+          </div>
+    {{ /each }}
+    </div>
+</body>
+
+</html>

@@ -12,7 +12,6 @@ module.exports = async (ctx) => {
     });
 
     const $ = cheerio.load(response.data);
-
     const items = [];
     $('.posts > .post > a').each((idx, item) => {
         const $item = $(item);

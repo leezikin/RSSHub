@@ -2,7 +2,7 @@ const art = require('art-template');
 const path = require('path');
 const config = require('../config');
 const he = require('he');
-const typeRegrx = /\.(atom|rss|json)$/;
+const typeRegrx = /\.(atom|rss|json|html)$/;
 // const unsupportedRegrx = /\.json$/;
 
 module.exports = async (ctx, next) => {
@@ -30,6 +30,13 @@ module.exports = async (ctx, next) => {
                 ctx.set({
                     'Content-Type': 'application/json; charset=UTF-8',
                 });
+                break;
+            case 'html':
+                ctx.set({
+                    'Content-Type': 'text/html; charset=UTF-8',
+                });
+                template = path.resolve(__dirname, '../views/html.art');
+
                 break;
             default:
                 template = path.resolve(__dirname, '../views/rss.art');

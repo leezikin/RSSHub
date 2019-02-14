@@ -335,6 +335,7 @@ router.get('/yande.re/post/popular_recent/:period', require('./routes/yande.re/p
 
 // 纽约时报
 router.get('/nytimes', require('./routes/nytimes/index'));
+router.get('/nytimes/proxy', require('./routes/nytimes/index2'));
 router.get('/nytimes/morning_post', require('./routes/nytimes/morning_post'));
 
 // 3dm
@@ -496,8 +497,8 @@ router.get('/hexo/next/:url', require('./routes/hexo/next'));
 // router.get('/google/scholar/:query', require('./routes/google/scholar'));
 // router.get('/google/doodles/:language?', require('./routes/google/doodles'));
 //
-// // Awesome Pigtals
-// router.get('/pigtails', require('./routes/pigtails'));
+// Awesome Pigtals
+router.get('/pigtails', require('./routes/pigtails'));
 //
 // // 每日环球展览 iMuseum
 // router.get('/imuseum/:city/:type', require('./routes/imuseum'));
@@ -913,16 +914,16 @@ router.get('/hexo/next/:url', require('./routes/hexo/next'));
 // // Apkpure
 // router.get('/apkpure/versions/:region/:pkg', require('./routes/apkpure/versions'));
 //
-// // 豆瓣美女
-// router.get('/dbmv/:category?', require('./routes/dbmv/index'));
+// 豆瓣美女
+router.get('/dbmv/:category?', require('./routes/dbmv/index'));
 //
 // // 中国药科大学
 // router.get('/cpu/home', require('./routes/cpu/home'));
 // router.get('/cpu/jwc', require('./routes/cpu/jwc'));
 // router.get('/cpu/yjsy', require('./routes/cpu/yjsy'));
 //
-// // 字幕组
-// router.get('/zimuzu/resource/:id?', require('./routes/zimuzu/resource'));
+// 字幕组
+router.get('/zimuzu/resource/:id?', require('./routes/zimuzu/resource'));
 //
 // // 虎嗅
 // router.get('/huxiu/tag/:id', require('./routes/huxiu/tag'));
